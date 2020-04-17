@@ -14,19 +14,30 @@ public class Utils {
 
     private static Object messageLock = new Object();
 
-    public  static void inc(){
-        synchronized (counterLock) {
+    private static Object counterDecreementLock = new Object();
+
+    public   static void inc(){
+        //synchronized (counterLock) {
             counter++;
-            System.out.println(counter);
-        }
+            System.out.println("Increement " + counter);
+        //}
     }
 
-    public static void append(String value) {
+    public synchronized static void append(String value) {
         synchronized (messageLock) {
             message = message != null ? message.append(value) : new StringBuffer(value);
             System.out.println(message.toString());
         }
     }
+
+    public   static void decreement(){
+        //synchronized (counterDecreementLock) {
+            counter--;
+            System.out.println("Decreement  " + counter);
+        //}
+    }
+
+
 
 
 }

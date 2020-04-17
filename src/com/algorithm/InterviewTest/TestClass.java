@@ -11,12 +11,17 @@ public class TestClass {
             Thread thread = new Thread(() -> {
                 Utils.inc();
             });
-            final String value = String.valueOf(i);
-            Thread thread1 = new Thread(() -> {
-                Utils.append("Value "+value);
+//            final String value = String.valueOf(i);
+//            Thread thread1 = new Thread(() -> {
+//                Utils.append("Value "+value);
+//            });
+            Thread thread2 = new Thread(() -> {
+                Utils.decreement();
             });
+            thread2.start();
             thread.start();
-            thread1.start();
+            //thread1.start();
+
         }
 
 
